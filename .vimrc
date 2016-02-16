@@ -17,9 +17,11 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-commentary'
 Plugin 'morhetz/gruvbox'
+Plugin 'tpope/vim-surround'
+Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 filetype plugin indent on
-
+autocmd FileType ruby compiler ruby
 " Settings {{{
 syntax on
 set number
@@ -66,10 +68,16 @@ nmap <silent> <C-UP>   <C-b>
 
 nmap <leader>w viw
 nmap <leader>v 0v$h
+" tpope comments
 nmap <leader>c gcc<CR>
 vmap <leader>c gc<CR>
+" tpope surroud
+nmap <leader>' ysiw'
+nmap <leader>" ysiw"
+" Ctrl a - select all
+map <C-a> <esc>ggVG<CR>
 " Remap ctrl + p to ,d
-let g:ctrlp_map = '<C-p>'
+let g:ctrlp_map = '<leader>d'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_prompt_mappings = {
   \ 'PrtClearCache()':      ['<c-r>'],
@@ -95,6 +103,7 @@ map g/ <Plug>(incsearch-stay)
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " Remap split navigation
+nnoremap <Tab> <C-w><C-w>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
