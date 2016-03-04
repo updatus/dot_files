@@ -22,6 +22,9 @@ Plugin 'ervandew/supertab'
 Plugin 't9md/vim-ruby-xmpfilter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'dkprice/vim-easygrep'
+Plugin 'tpope/vim-endwise'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'mattn/emmet-vim'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'xolox/vim-easytags'
 call vundle#end()
@@ -65,6 +68,7 @@ set showmatch                         " Show matching brackets
 set ruler                             " Show the line and column number
 set esckeys                           " Cursor keys in insert mode
 set nojoinspaces
+set mouse=a                           " Copy with mouse and without line numbers
 
 let mapleader=","
 " Mappings {{
