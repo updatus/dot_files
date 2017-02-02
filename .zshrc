@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/vbalaban/.oh-my-zsh
+# 10ms for key sequences
+KEYTIMEOUT=1
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,11 +51,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git rails ruby vagrant bundler)
 
 # User configuration
 
-export PATH="$PATH:/Users/vbalaban/.rvm/gems/ruby-2.1.5/bin:/Users/vbalaban/.rvm/gems/ruby-2.1.5@global/bin:/Users/vbalaban/.rvm/rubies/ruby-2.1.5/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Cellar/android-sdk/24.3.3//tools:/usr/local/Cellar/android-sdk/24.3.3//platform-tools:/usr/local/Cellar/android-ndk/r10e/:/Users/vbalaban/.rvm/bin"
+export PATH="$PATH:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Cellar/android-sdk/24.3.3/tools:/usr/local/Cellar/android-sdk/24.3.3/platform-tools:/usr/local/Cellar/android-ndk/r10e"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -97,5 +99,21 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+export PATH="/usr/local/sbin:$PATH"
+
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
+
+export EDITOR='vim'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

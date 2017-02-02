@@ -28,6 +28,7 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'metakirby5/codi.vim'
 Plugin 'tpope/vim-cucumber'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'matze/vim-move'
 " Plugin 'edkolev/tmuxline.vim'
 " Plugin 't9md/vim-ruby-xmpfilter'
 " Plugin 'Valloric/YouCompleteMe'
@@ -90,6 +91,7 @@ set laststatus=2                      " For airline - show status bar - not only
 " set ruler                           " Show the line and column number
 set noshowmode
 set noruler
+" set foldmethod=indent
 
 filetype plugin indent on
 autocmd FileType ruby compiler ruby
@@ -107,9 +109,6 @@ nnoremap <leader>d yyP<down>
 
 inoremap <leader>; <Esc>$i<right>;
 nnoremap <leader>; $i<right>;<Esc>
-
-" nmap <leader>w viw
-" nmap <leader>v 0v$h
 
 " tpope comments
 nmap <leader>c gcc<CR>
@@ -151,17 +150,6 @@ map g/ <Plug>(incsearch-stay)
 " Two spaces with >> for ruby
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
-" Remap split navigation
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
-
-" nnoremap <C-down> <C-W><C-J>
-" nnoremap <C-up> <C-W><C-K>
-" nnoremap <C-right> <C-W><C-L>
-" nnoremap <C-left> <C-W><C-H>
-
 " Easier to type, and I never use the default behavior.
 noremap H ^
 noremap L $
@@ -180,13 +168,6 @@ nnoremap <A-Up> :m .-2<CR>==
 inoremap <A-Up> <Esc>:m .-2<CR>==gi
 vnoremap <A-Up> :m '<-2<CR>gv=gv
 
-vnoremap <A-j> :m '>+1<CR>gv=gv
-nnoremap <A-j> :m .+1<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-k> :m '<-2<CR>gv=gv
-
 if &term =~ '^screen'
   " tmux will send xterm-style keys when xterm-keys is on
   execute "set <xUp>=\e[1;*A"
@@ -196,16 +177,6 @@ if &term =~ '^screen'
 endif
 " vim could not recognized rvm ruby version - https://rvm.io/integration/vim
 set shell=/bin/sh
-
-" rcodetooll xmpfilter
-" autocmd FileType ruby nmap <buffer> <leader>m <Plug>(xmpfilter-mark)
-" autocmd FileType ruby xmap <buffer> <leader>m <Plug>(xmpfilter-mark)
-" autocmd FileType ruby imap <buffer> <leader>m<Plug>(xmpfilter-mark)
-
-" autocmd FileType ruby nmap <buffer> <leader>r <Plug>(xmpfilter-run)
-" autocmd FileType ruby xmap <buffer> <leader>r <Plug>(xmpfilter-run)
-" autocmd FileType ruby imap <buffer> <leader>r <Plug>(xmpfilter-run)
-
 
 "quick fix autoheight window
 au FileType qf call AdjustWindowHeight(3, 25)
@@ -240,3 +211,6 @@ autocmd VimResized * :wincmd =
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
+
+" autodeleting trailing spaces for ruby only
+" autocmd FileType ruby autocmd BufWritePre <buffer> %s/\s\+$//e

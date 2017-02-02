@@ -1,6 +1,6 @@
 [user]
-	email = 
-	name = Vadym Balaban
+        email = vadym.balaban@lookout.com
+        name = Vadym Balaban
 [alias]
         co = checkout
         ci = commit -v
@@ -12,8 +12,8 @@
         diffstat = diff --stat -r
         update = pull --rebase upstream master
         aliases = config --get-regexp alias
-	lg = log --graph --decorate --oneline --all
-	plg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        lg = log --graph --decorate --oneline --all
+        plg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         pg = push gerrit HEAD:refs/publish/master
         up = pull --rebase upstream master
 [color]
@@ -25,7 +25,8 @@
         status = auto
         showbranch = auto
 [core]
-	excludesfile = /Users/vbalaban/.gitignore_global
+        excludesfile = /Users/vbalaban/.gitignore_global
+        editor = /usr/local/bin/vim
 [difftool "sourcetree"]
 	cmd = /opt/homebrew-cask/Caskroom/diffmerge/4.2.0.697/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 
